@@ -1,0 +1,30 @@
+
+<div role="menu"
+	 class="leftMenuBar" 
+	 ng-controller="leftMenuCtrl" 
+	 dgtrade-Add-Attributes="aria-label={ariaNavMenu}">
+
+	<!--navigation-->
+	<ul id="nav" role='menubar'>
+				<li	class="menuList" 
+					role='menuitem' 
+					ng-repeat="item in leftMenuItems" >
+					
+					<div>
+
+						<span class="icon" ng-class="item.css"></span>
+						
+						<a href=''
+						   accesskey="{{item.accesskey}}" 
+						   ng-click="show(item.href)">
+	                       {{item.title}}
+					    </a>
+					 	 
+					</div>
+					
+				</li>
+	</ul>
+
+	
+</div>
+

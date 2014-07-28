@@ -1,0 +1,72 @@
+
+<!doctype html>
+<html lang="en"  ng-app="dgApp" >
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	
+	
+	<title>first page</title>
+	<link rel="stylesheet" href="pages/css/index.css">
+	<link rel="stylesheet" href="widgets/css/widgets.css">
+	<link rel="stylesheet" href="lib/bootstrap-css/css/bootstrap.css">
+	
+
+  </head>
+
+  <body >
+	
+	<div class="container header">
+		<div class="banner"></div>
+		<div dgtrade-top-menu></div>
+		<div dgtrade-app-logo></div>
+		<div dgtrade-breadcrumb></div>
+		<div dgtrade-session-manager></div>
+		<div dgtrade-error-message></div>
+	</div>
+	<div class="container main" ng-controller='indexCtrl'>
+		<div dgtrade-left-menu></div>
+		<div id="mainContent" class="ng-view"></div>
+		<button ng-click="test()">test error</button>
+	</div>
+	
+	
+	
+   <script src="lib/jquery/jquery-1.11.1.min.js"></script>
+   <script src="lib/angular/angular.min.js"></script>
+   <script src="lib/angular/angular-route.min.js"></script>
+   
+   
+   
+   <script src="structure/services/services.js"></script>
+   <script src="structure/app.js"></script>
+   
+  
+   <script src="widgets/widgetDefinition.js"></script>
+   <script src="widgets/services/widgetServices.js"></script>
+   <script src="widgets/controllers/leftMenuCtrl.js"></script>
+   <script src="widgets/controllers/topMenuCtrl.js"></script>
+   <script src="widgets/controllers/breadCrumbCtrl.js"></script>
+   <script src="widgets/controllers/errorMessageCtrl.js"></script>
+   <script src="widgets/controllers/appLogoCtrl.js"></script>
+   <script src="widgets/controllers/sessionManagerCtrl.js"></script>
+   
+   
+ 
+   
+   
+	
+   <script src="pages/controllers/indexCtrl.js"></script>
+  
+   
+  <!-- <script src="scripts/widgets/attributeDefinitions.js"></script>
+   <script src="scripts/widgets/utilities.js"></script>
+   <script src="scripts/pages/controllers/index.js"></script>
+   <script src="scripts/services/services.js"></script>
+   <script src='resources/lang/lang.js'></script>-->
+		
+  </body>
+</html>

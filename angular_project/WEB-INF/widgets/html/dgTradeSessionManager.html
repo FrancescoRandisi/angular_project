@@ -1,0 +1,33 @@
+<div ng-controller="sessionManagerCtrl"
+	 class="sessionManager">
+
+	 <ul>
+		<li class="username">
+			<a href="">{{user}}</a>
+		</li>
+		<li class="sessionAction">
+			<a href="" ng-show="logged" ng-click="logout()">logout</a>
+			<a href="" ng-hide="logged" ng-click="openLoginModal()">login</a>
+		</li>
+	</ul>
+	
+	<div class="modalContainer" ng-show="modalLoginVisible"></div>
+	<div class="loginModal" ng-show="modalLoginVisible">
+	  <div class="modal-header">
+		<button type="button" class="close" ng-click="close()">×</button>
+		<h4>Login</h4>
+	  </div>
+	  <div class="modal-body">
+			<h4>Some Input</h4>
+			<p><input type="text" ng-model="userName"></p>
+			<p><input type="password" ng-model="password"></p>
+	  </div>
+	  <div class="modal-footer">
+		<button type="button" class="btn btn-default" ng-click="close()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="login()">Save changes</button>
+	  </div>
+	</div>
+	
+	
+	
+</div>

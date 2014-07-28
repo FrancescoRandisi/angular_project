@@ -1,0 +1,13 @@
+<div role="alert"
+	 ng-controller="errorMessageCtrl"
+	 ng-show="visible"
+	 class="errorMsg">
+
+	 <div class="alert alert-{{errorType}}">
+		<a href="#" class="close"  ng-click="close()">&times;</a>
+		<div>	
+		{{message}}
+		</div>
+	</div>
+	
+</div>

@@ -1,0 +1,15 @@
+{ 
+ "items":[{	"title": "item 1", 
+			"href":"first", 
+			"accesskey":"f"
+		  },  
+		  {	"title":   "item 2", 
+		 	"href": "second", 
+		 	"accesskey": "s"
+		   },
+		   {"title":   "item 3", 
+		 	"href": "third", 
+		 	"accesskey": "t"
+		   }
+		   ]
+}	

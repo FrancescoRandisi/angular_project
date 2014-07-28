@@ -1,0 +1,18 @@
+<div role="navigation"
+	 class="breadcrumb" 
+	 ng-controller="breadcrumbCtrl" 
+	 dgtrade-Add-Attributes="aria-label={ariaNavMenu}">
+
+	<!--navigation-->
+	<ul id="nav" role='menubar'>
+				<li	role='menuitem' 
+					ng-repeat="item in bcItems" >
+									
+						<a href=''
+						ng-click="show(item.href)">
+							{{item.title}}
+						</a>
+				</li>
+	</ul>
+
+</div>
