@@ -1,149 +1,72 @@
-var widgetServices = angular.module('widgetServices', []);
+var widgetServices = angular.module('widgetServices', [ 'utils' ]);
 
 widgetServices.factory('Location', function($location) {
 	return {
-		path: function(uri) {
+		path : function(uri) {
 			if (uri != undefined) {
 				uriComponents = uri.split('/');
-				for (var i=0; i<uriComponents.length; i++) {
+				for ( var i = 0; i < uriComponents.length; i++) {
 					uriComponents[i] = encodeURIComponent(uriComponents[i]);
 				}
 				uri = uriComponents.join('/');
 				return $location.path(uri);
-			}
-			else {
+			} else {
 				return $location.path();
 			}
 		},
-		getBreadCrumb:function() {
-		
-			if($location.path()=="/"){
-				return [{title:"Home",
-						href:"/"}];
+		getBreadCrumb : function() {
+
+			if ($location.path() == "/") {
+				return [ {
+					title : "Home",
+					href : "/"
+				} ];
 			}
-			
-		
+
 			var path = $location.path().split('/');
-			for (var i=0; i<path.length; i++) {
-					var title,href;
-					if(path[i]==""){
-						title="Home";
-						href="";
-					}
-					else{
-						title=path[i];
-						href=path[i];
-					}
-					path[i] = {	title:title,
-								href:"/"+href
-								};
+			for ( var i = 0; i < path.length; i++) {
+				var title, href;
+				if (path[i] == "") {
+					title = "Home";
+					href = "";
+				} else {
+					title = path[i];
+					href = path[i];
 				}
+				path[i] = {
+					title : title,
+					href : "/" + href
+				};
+			}
 			return path;
 		}
-		
-		
+
 	}
 });
 
-
-widgetServices.factory('WidgetConfigurator', function($http,$q) {
+widgetServices.factory('WidgetConfigurator', function(AjaxRequest) {
 	var widgetConfigurator = {}
-	
-	
-	widgetConfigurator.getAppLogoConfiguration = function() {
-		var deferred = $q.defer();
-    
-		$http.get('widgets/configurations/appLogoConfiguration.json',
-		{
-			transformResponse: function (data, headersGetter) {
-				try {
-					var jsonObject = JSON.parse(data); // verify that json is valid
-					return jsonObject;
-				}
-				catch (e) {
-					console.log("did not receive a valid Json: " + e);
-				}
-				return {};
-			}
-		}
-		
-		)
-		.success(function(data) {
-                deferred.resolve(data);
-            })
-		.error(function(data,status){
-			deferred.reject(data);
-			console.log("error in the request: " + status);
-		});
-		 
-		  return deferred.promise;
-			
-	}
-	
-	widgetConfigurator.getLeftMenuConfiguration = function() {
-		var deferred = $q.defer();
-    
-		$http.get('widgets/configurations/leftMenuConfiguration.json',
-		{
-			transformResponse: function (data, headersGetter) {
-				try {
-					var jsonObject = JSON.parse(data); // verify that json is valid
-					return jsonObject;
-				}
-				catch (e) {
-					console.log("did not receive a valid Json: " + e);
-				}
-				return {};
-			}
-		}
-		
-		)
-		.success(function(data) {
-                deferred.resolve(data);
-            })
-		.error(function(data,status){
-			deferred.reject(data);
-			console.log("error in the request: " + status);
-		});
-		
-		 
-		  return deferred.promise;
-			
+
+	widgetConfigurator.getSessionMananagerConfiguration = function(callback,error) {
+		var url = 'widgets/configurations/sessionManagerConfiguration.json';
+		AjaxRequest.getJSON(url, callback, error);
 	}
 
-	
-	widgetConfigurator.getTopMenuConfiguration = function() {
-		var deferred = $q.defer();
-    
-		$http.get('widgets/configurations/topMenuConfiguration.json',
-		{
-			transformResponse: function (data, headersGetter) {
-				try {
-					var jsonObject = JSON.parse(data); // verify that json is valid
-					return jsonObject;
-				}
-				catch (e) {
-					console.log("did not receive a valid Json: " + e);
-				}
-				return {};
-			}
-		}
-		
-		)
-		.success(function(data) {
-                deferred.resolve(data);
-            })
-		.error(function(data,status){
-			deferred.reject(data);
-			console.log("error in the request: " + status);
-		});
-		
-		 
-		  return deferred.promise;
-			
+	widgetConfigurator.getAppLogoConfiguration = function(callback, error) {
+		var url = 'widgets/configurations/appLogoConfiguration.json';
+		AjaxRequest.getJSON(url, callback, error);
 	}
-	
+
+	widgetConfigurator.getLeftMenuConfiguration = function(callback, error) {
+		var url = 'widgets/configurations/leftMenuConfiguration.json';
+		AjaxRequest.getJSON(url, callback, error);
+	}
+
+	widgetConfigurator.getTopMenuConfiguration = function(callback, error) {
+		var url = 'widgets/configurations/topMenuConfiguration.json';
+		AjaxRequest.getJSON(url, callback, error);
+	}
+
 	return widgetConfigurator;
-	
 
 });

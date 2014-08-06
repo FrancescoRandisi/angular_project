@@ -1,10 +1,11 @@
 angular.module('widgets').controller('leftMenuCtrl', function ($scope,Location,WidgetConfigurator) {
 
-		var promise = WidgetConfigurator.getLeftMenuConfiguration();
-		promise.then(function(data) {
+		var callback = function(data) {
 			$scope.leftMenuItems = data.items;
-		});
+		}
+		WidgetConfigurator.getLeftMenuConfiguration(callback);
 		
+	
 		$scope.show = function(path) {
             Location.path(path);
         }
