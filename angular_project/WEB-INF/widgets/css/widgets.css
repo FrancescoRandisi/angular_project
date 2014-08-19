@@ -1,63 +1,56 @@
 .leftMenuBar {
 	padding-right:1em;
 	height:100%;
-	float: left;
-	border-right: 1px solid #072c6f;
-	
+	float:left;
+	border-right:1px solid #072c6f;
 }
-.breadcrumb{
+.breadcrumb {
 	position:relative;
 	top:7.5em;
-	background-color:transparent!important;
-	float:left;	
+	background-color:transparent !important;
+	float:left;
 	clear:both;
 }
-
-.breadcrumb li{
-	float:left;	
+.breadcrumb li {
+	float:left;
 	padding:0.2em;
-	
 }
 .breadcrumb li + li::before {
-    content: " | ";
+	content:" | ";
 }
-
-.errorMsg{
+.errorMsg {
 	position:relative;
 	top:6.5em;
-	margin: 0 auto;
-	clear: both;
+	margin:0 auto;
+	clear:both;
 }
-.topMenu{
-	position: relative;
-	top: 8em;
-	left: 10em;
+.topMenu {
+	position:relative;
+	top:8em;
+	left:10em;
 	float:left;
-	
 }
-.topMenu a{
-	color: #ffffff;
-	
+.topMenu a {
+	color:#ffffff;
 }
-.topMenu a:hover{
-	color: #ffff99;
-    text-decoration: underline !important;
+.topMenu a:hover {
+	color:#ffff99;
+	text-decoration:underline !important;
 	background-color:transparent !important;
 }
-.appLogo{
-	position: relative;
-	top: 7.5em;
+.appLogo {
+	position:relative;
+	top:7.5em;
 	float:right;
-	color: #ffffff;
+	color:#ffffff;
 }
-
-.appLogo img{
+.appLogo img {
 	float:left;
 }
-.appLogo h5{
+.appLogo h5 {
 	padding-left:1em;
 }
-.sessionManager{
+.sessionManager {
 	position:relative;
 	top:7.8em;
 	float:right;
@@ -65,32 +58,83 @@
 .sessionAction {
 	float:right;
 }
-.sessionAction a,.sessionAction a:hover{
+.sessionAction a, .sessionAction a:hover {
 	color:red;
-	
 }
-.modalContainer{
-	overflow-x: hidden;
-	overflow-y: auto;
-	opacity: 0.5;
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	z-index: 1000;
+.modalContainer {
+	overflow-x:hidden;
+	overflow-y:auto;
+	opacity:0.5;
+	position:fixed;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	z-index:1000;
 	background-color:#000000;
 }
-
-.loginModal{
-	position: fixed;
-    top: 30%;
-	left: 50%;
-	margin-top: -50px;
-	margin-left: -100px;
+.loginModal {
+	position:fixed;
+	top:30%;
+	left:50%;
+	margin-top:-50px;
+	margin-left:-100px;
 	background-color:#ffffff;
-	border: 1px solid #072c6f;
-	z-index: 1050;
+	border:1px solid #072c6f;
+	z-index:1050;
+}
+.langSelector{
+	position:relative;
+	top:7.2em;
+	float:right;
+	width: 7em;
+	height:3.8em;
+	margin-right:1em;
+	
+
+	
+}
+.langSelector a{
+	color:#FFFFFF;
+}
+.currentLang{
+	margin-top:1.5em;
+	margin-bottom:0.7em;
+	border-right:1px solid #004268;
+}
+.currentLang a {
+	
+	padding-left:0.4em;
+	
+}
+.currentLang img{
+	padding-left:0.4em;
+}
+.langSelector a:hover {
+	color:#ffff99;
+	text-decoration:underline !important;
+}
+.langOptions {
+	display:none;
+	border-top:1px solid #ffffff;
+	background-color:#004268;
+	position:absolute;
+	width:7em;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	padding-top: 0.6em;
+	
 }
 
+.langSelector.selected{
+	background-color:#004268;
+}
+.langSelector.selected .currentLang a {
+	color:#ffff99;
+}
 
+.langOptions li{
+	padding-left:0.5em;
+	padding-bottom:0.5em;
+
+}

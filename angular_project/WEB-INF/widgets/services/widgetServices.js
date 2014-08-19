@@ -1,48 +1,5 @@
 var widgetServices = angular.module('widgetServices', [ 'utils' ]);
 
-widgetServices.factory('Location', function($location) {
-	return {
-		path : function(uri) {
-			if (uri != undefined) {
-				uriComponents = uri.split('/');
-				for ( var i = 0; i < uriComponents.length; i++) {
-					uriComponents[i] = encodeURIComponent(uriComponents[i]);
-				}
-				uri = uriComponents.join('/');
-				return $location.path(uri);
-			} else {
-				return $location.path();
-			}
-		},
-		getBreadCrumb : function() {
-
-			if ($location.path() == "/") {
-				return [ {
-					title : "Home",
-					href : "/"
-				} ];
-			}
-
-			var path = $location.path().split('/');
-			for ( var i = 0; i < path.length; i++) {
-				var title, href;
-				if (path[i] == "") {
-					title = "Home";
-					href = "";
-				} else {
-					title = path[i];
-					href = path[i];
-				}
-				path[i] = {
-					title : title,
-					href : "/" + href
-				};
-			}
-			return path;
-		}
-
-	}
-});
 
 widgetServices.factory('WidgetConfigurator', function(AjaxRequest) {
 	var widgetConfigurator = {}
@@ -67,6 +24,11 @@ widgetServices.factory('WidgetConfigurator', function(AjaxRequest) {
 		AjaxRequest.getJSON(url, callback, error);
 	}
 
+	widgetConfigurator.getlangSelectorConfiguration = function(callback, error) {
+		var url = 'widgets/configurations/langSelectorConfiguration.json';
+		AjaxRequest.getJSON(url, callback, error);
+	}
+	
 	return widgetConfigurator;
 
 });

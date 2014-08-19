@@ -167,3 +167,48 @@ services.factory('SessionManagement', function(AjaxRequest) {
 	return sessionService;
 
 });
+
+
+services.factory('Location', function($location) {
+	return {
+		path : function(uri) {
+			if (uri != undefined) {
+				uriComponents = uri.split('/');
+				for ( var i = 0; i < uriComponents.length; i++) {
+					uriComponents[i] = encodeURIComponent(uriComponents[i]);
+				}
+				uri = uriComponents.join('/');
+				return $location.path(uri);
+			} else {
+				return $location.path();
+			}
+		},
+		getBreadCrumb : function() {
+
+			if ($location.path() == "/") {
+				return [ {
+					title : "Home",
+					href : "/"
+				} ];
+			}
+
+			var path = $location.path().split('/');
+			for ( var i = 0; i < path.length; i++) {
+				var title, href;
+				if (path[i] == "") {
+					title = "Home";
+					href = "";
+				} else {
+					title = path[i];
+					href = path[i];
+				}
+				path[i] = {
+					title : title,
+					href : "/" + href
+				};
+			}
+			return path;
+		}
+
+	}
+});

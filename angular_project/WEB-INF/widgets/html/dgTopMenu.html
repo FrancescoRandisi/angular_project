@@ -1,6 +1,6 @@
 <div class="collapse navbar-collapse topMenu" role="menu" ng-controller="topMenuCtrl" >
 		<ul class="nav navbar-nav"  role='menubar'>
-			<li	role='menuitem' ng-repeat="item in topMenuItems" >
+			<li	role='menuitem' ng-repeat="item in topMenuItems | authorizedElem : isLogged" >
 						<span class="icon" ng-class="item.css"></span>
 						
 						<a href=''

@@ -1,14 +1,17 @@
 { 
- "items":[{	"title": "Upload a Francesco", 
+ "items":[{	"title": "First Page", 
 			"href":"first", 
-			"accesskey":"f"
+			"accesskey":"f",
+		 	"authorized":false
 		  },  
-		  {	"title":   "Find a Report", 
+		  {	"title":   "Second Page", 
 		 	"href": "second", 
-		 	"accesskey": "s"
+		 	"accesskey": "s",
+		 	"authorized":true
 		   },
-		   {"title":   "Help", 
+		   {"title":   "Third", 
 		 	"href": "third", 
-		 	"accesskey": "t"
+		 	"accesskey": "t",
+		 	"authorized":true
 		   }]
 }	

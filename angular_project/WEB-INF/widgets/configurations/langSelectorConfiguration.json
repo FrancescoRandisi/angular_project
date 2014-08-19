@@ -1,0 +1,12 @@
+{ 
+ "items":[{	"label": "English", 
+			"value":"EN",
+			"default":true
+		  },  
+		  {"label": "Francaise", 
+			"value":"FR"
+		   },
+		   {"label": "Italiano", 
+			"value":"IT"
+		   }]
+}	

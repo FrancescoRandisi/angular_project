@@ -1,4 +1,4 @@
-var widget = angular.module('widgets', ['services','widgetServices']);
+var widget = angular.module('widgets', ['services','widgetServices','widgetFilters']);
 /* Menu Bar Directive */
 widget.directive('dgtradeLeftMenu', function() {
 	return {
@@ -36,6 +36,15 @@ widget.directive('dgtradeSessionManager', function() {
 
 });
 
+widget.directive('dgtradeLangSelector', function() {
+	return {
+		restrict : 'EA',
+		replace: true,
+		templateUrl : 'widgets/html/dgTradeLangSelector.html'
+	}
+
+});
+
 widget.directive('dgtradeAppLogo', function() {
 	return {
 		restrict : 'EA',
@@ -51,7 +60,6 @@ widget.directive('dgtradeErrorMessage', function() {
 	return {
 		scope:{},
 		restrict : 'EA',
-		
 		templateUrl : 'widgets/html/dgTradeErrorMessage.html'
 	}
 
