@@ -2,8 +2,8 @@ var app = angular.module('dgApp');
 
 app.controller('indexCtrl', function($scope,$rootScope,Location) {
 		
-	$scope.test=function(){
-		$scope.$emit('error'); 
+	$scope.test=function(code){
+		$scope.$emit('error',[code]); 
 	}
 	
 	$rootScope.$on('logout', function() {

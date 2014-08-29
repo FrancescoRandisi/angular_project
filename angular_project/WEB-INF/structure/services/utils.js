@@ -21,6 +21,7 @@ utils.factory('AjaxRequest', function($http) {
 
 		).success(function(data) {
 			if(callback){
+				console.log("received data for " +url);
 				callback(data);
 			}
 		}).error(function(data, status) {
@@ -40,6 +41,7 @@ utils.factory('AjaxRequest', function($http) {
 			params:parameter})
 		.success(function(data) {
 			if(callback){
+				console.log("received data for " +url);
 				callback(data);
 			}
 		})

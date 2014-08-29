@@ -1,0 +1,13 @@
+{
+	"strings": {
+		"dgMenuFirstPage": "First Page",
+		"dgMenuSecondPage": "Second Page",
+		"dgMenuThirdPage": "Third Page"
+	},
+	"errors": {
+		"100": {"type":"danger","message":"Critical Error!"},
+		"200": {"type":"danger","message":"Serious Error"},
+		"300": {"type":"warning","message":"Error"},
+		"400": {"type":"info","message":"Bitch please!"}
+	}
+}

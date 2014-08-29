@@ -1,0 +1,15 @@
+<div role="alert"
+ng-controller="errorMessageCtrl"
+ng-show="visible"
+class="errorMsg">
+
+	<div  ng-repeat="error in errors track by $index"  class="alert alert-{{error.type}}">
+		
+			<a href="" class="close"  ng-click="close(error.id)">&times;</a>
+			<div>
+				{{error.message}}
+			</div>
+		
+	</div>
+
+</div>

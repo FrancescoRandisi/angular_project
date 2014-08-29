@@ -18,5 +18,8 @@ angular.module('widgets').controller('topMenuCtrl',	function($scope, $rootScope,
 			$rootScope.$on('logout', function() {
 				$scope.isLogged = false;
 			});
+			$rootScope.$on('langChange', function(e,args) {
+				console.log(args);
+			});
 
 		});

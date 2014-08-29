@@ -12,5 +12,16 @@ var conf = {
 		url : '/second',
 		templateUrl : 'pages/html/second.html',
 		authorized : true
+	} ],
+	"languages" : [ {
+		"label" : "English",
+		"value" : "EN",
+		"default" : true
+	}, {
+		"label" : "Francaise",
+		"value" : "FR"
+	}, {
+		"label" : "Italiano",
+		"value" : "IT"
 	} ]
 }

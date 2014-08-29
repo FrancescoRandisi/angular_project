@@ -1,13 +1,13 @@
 { 
- "items":[{	"title": "First Page", 
+ "items":[{	"title": "dgMenuFirstPage", 
 			"href":"first", 
 			"accesskey":"f"
 		  },  
-		  {	"title":   "Second Page", 
+		  {	"title":   "dgMenuSecondPage", 
 		 	"href": "second", 
 		 	"accesskey": "s"
 		   },
-		   {"title":   "Third Page", 
+		   {"title":   "dgMenuThirdPage", 
 		 	"href": "third", 
 		 	"accesskey": "t"
 		   }]

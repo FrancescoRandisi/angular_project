@@ -1,24 +1,24 @@
 var widget = angular.module('widgets', ['services','widgetServices','widgetFilters']);
 /* Menu Bar Directive */
-widget.directive('dgtradeLeftMenu', function() {
+widget.directive('dgLeftMenu', function() {
 	return {
 		restrict : 'AE',
 		replace: true,
-		templateUrl : 'widgets/html/dgTradeLeftMenu.html'
+		templateUrl : 'widgets/html/dgLeftMenu.html'
 	}
 
 });
 
-widget.directive('dgtradeBreadcrumb', function() {
+widget.directive('dgBreadcrumb', function() {
 	return {
 		restrict : 'EA',
 		replace: true,
-		templateUrl : 'widgets/html/dgTradeBreadcrumb.html'
+		templateUrl : 'widgets/html/dgBreadcrumb.html'
 	}
 
 });
 
-widget.directive('dgtradeTopMenu', function() {
+widget.directive('dgTopMenu', function() {
 	return {
 		restrict : 'EA',
 		replace: true,
@@ -27,40 +27,40 @@ widget.directive('dgtradeTopMenu', function() {
 
 });
 
-widget.directive('dgtradeSessionManager', function() {
+widget.directive('dgSessionManager', function() {
 	return {
 		restrict : 'EA',
 		replace: true,
-		templateUrl : 'widgets/html/dgTradeSessionManager.html'
+		templateUrl : 'widgets/html/dgSessionManager.html'
 	}
 
 });
 
-widget.directive('dgtradeLangSelector', function() {
+widget.directive('dgLangSelector', function() {
 	return {
 		restrict : 'EA',
 		replace: true,
-		templateUrl : 'widgets/html/dgTradeLangSelector.html'
+		templateUrl : 'widgets/html/dgLangSelector.html'
 	}
 
 });
 
-widget.directive('dgtradeAppLogo', function() {
+widget.directive('dgAppLogo', function() {
 	return {
 		restrict : 'EA',
 		replace: true,
-		templateUrl : 'widgets/html/dgTradeAppLogo.html'
+		templateUrl : 'widgets/html/dgAppLogo.html'
 	}
 
 });
 
 
 /*Error Message Directive*/
-widget.directive('dgtradeErrorMessage', function() {
+widget.directive('dgErrorMessage', function() {
 	return {
 		scope:{},
 		restrict : 'EA',
-		templateUrl : 'widgets/html/dgTradeErrorMessage.html'
+		templateUrl : 'widgets/html/dgErrorMessage.html'
 	}
 
 });

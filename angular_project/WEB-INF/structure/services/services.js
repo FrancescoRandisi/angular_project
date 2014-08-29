@@ -7,103 +7,90 @@ var services = angular.module('services', [ 'utils' ]);
  * 
  */
 
-services.factory('multiLanguage', function() {
+services.factory('multiLanguage', function(AjaxRequest,SessionManagement) {
 	var languageServices = {}
 
 	// set the local reference to the dictionary object
-	languageServices.dictionary = lang;
+	languageServices.dictionaries = {};
 
 	// get reference to the list of supported language
-	languageServices.supportedLang = lang.languages;
+	languageServices.supportedLang = conf.languages;
+	
+	languageServices.currentLang=null;
 
-	languageServices.currentLang = languageServices.supportedLang[0];
-
-	/***************************************************************************
-	 * getSupportedLanguage* ********************** return the list of the
-	 * supported language
-	 * 
-	 * RETURN: [object] = object containing the list of supported languages
-	 */
+	var callback= function(data){
+		console.log("default language set to "+languageServices.currentLang.label);
+		languageServices.dictionaries[languageServices.currentLang.value]=data;
+	};
+	
+	languageServices.currentLang=SessionManagement.getSessionValue("lang");
+	
+	if(!languageServices.currentLang){
+		languageServices.currentLang = conf.languages[0];
+	}
+	
+	var url= 'fakeJsonAnswers/lang/lang_'+languageServices.currentLang.value+'.json';
+	AjaxRequest.getJSON(url,callback, null);
+	
+	
 	languageServices.getSupportedLanguage = function() {
 		return this.supportedLang;
 	}
 
-	/***************************************************************************
-	 * setCurrentLanguage * ********************* set the current language
-	 * 
-	 * PARAMS: lang[string] = id of the language to be set
-	 * 
-	 */
-	languageServices.setCurrentLanguage = function(lang) {
-		for ( var index in this.supportedLang) {
-			if (this.supportedLang[index].id == lang) {
-				this.currentLang = this.supportedLang[index];
-				return;
-			}
+	
 
+	languageServices.setCurrentLanguage = function(language,scope) {
+		if(language==this.currentLang){
+			console.log("language "+ language.label);
+			return;
 		}
-
+		
+		if(!this.dictionaries[language.value]){
+			var url= 'fakeJsonAnswers/lang/lang_'+language.value+'.json';	
+			AjaxRequest.getJSON(url, function(data){
+				console.log("retrieved dictionary for "+language.label);
+				languageServices.dictionaries[language.value]=data;
+				languageServices.currentLang=language;
+				scope.$emit('langChange',language); 
+				SessionManagement.setSessionValue("lang",language);
+			}, function(){
+				console.log("no dictionary for "+language.label);
+				languageServices.setCurrentLanguage(languageServices.currentLang,scope);
+			});
+		}
+		else{
+			languageServices.currentLang=language;
+			SessionManagement.setSessionValue("lang",language);
+			scope.$emit('langChange',language); 
+			console.log("set "+language.label+" language");
+		}
 	}
 
-	/***************************************************************************
-	 * getCurrentLanguage * ********************* return the current language
-	 * 
-	 * RETURN: [object] = object containing the id and description of the
-	 * current language set
-	 * 
-	 */
 	languageServices.getCurrentLanguage = function() {
 		return this.currentLang;
 	}
 
-	/***************************************************************************
-	 * getString * ************ look for the value of related key accordingly
-	 * with the current language
-	 * 
-	 * PARAMS: key[string] = string name RETURN: [string] = string associated
-	 * with the key value and the current language
-	 * 
-	 */
 	languageServices.getString = function(key) {
 
 		return this.getResource(key, 'strings');
 
 	}
 
-	/***************************************************************************
-	 * getError * ************ look for the value of related key accordingly
-	 * with the current language
-	 * 
-	 * PARAMS: key[string] = string name RETURN: [string] = string associated
-	 * with the key value and the current language
-	 * 
-	 */
+	
 	languageServices.getError = function(key) {
 
-		return this.getResource(key, 'errorMessage');
+		return this.getResource(key, 'errors');
 
 	}
-	/***************************************************************************
-	 * getResource * ************** return the proper string value in relation
-	 * with the type and key
-	 * 
-	 * PARAMS: key[string] = string name type[string] = type of the resource
-	 * RETURN: [string] = string associated with the key value,type and current
-	 * language
-	 * 
-	 */
+	
 	languageServices.getResource = function(key, type) {
 
 		// if there is no value associated return -
-		if (!this.dictionary[type][key]) {
+		if (!this.dictionaries[this.currentLang.value][type][key]) {
 			return '-';
 		}
-		if (!this.dictionary[type][key][this.currentLang.id]) {
-			// if there is no translation for the language we fall back to
-			// english
-			return this.dictionary[type][key]['EN'];
-		}
-		return this.dictionary[type][key][this.currentLang.id];
+		
+		return this.dictionaries[this.currentLang.value][type][key];
 
 	}
 
@@ -116,7 +103,7 @@ services.factory('SessionManagement', function(AjaxRequest) {
 
 	sessionService.storage = localStorage;
 	sessionService.type = "local";
-	sessionService.sessionObjKey = "dgTrade";
+	sessionService.sessionObjKey = "dg";
 
 	// Two function to manage the get/set in the session and local storage
 	sessionService.setObject = function(key, value) {
@@ -139,7 +126,15 @@ services.factory('SessionManagement', function(AjaxRequest) {
 
 	// Retrive the key session value
 	sessionService.getSessionValue = function(key) {
-		return this.getSessionObject(this.sessionObjKey)[key];
+		var sessionObj = this.getSessionObject(this.sessionObjKey);
+		if(sessionObj){
+			return sessionObj[key];
+		}
+		else{
+			return null;
+		}
+		
+		
 	};
 	
 	sessionService.deleteSession = function() {
@@ -147,7 +142,7 @@ services.factory('SessionManagement', function(AjaxRequest) {
 	};
 	
 	sessionService.login = function(userName, password, callback) {
-		var url = "widgets/configurations/fakeLoginAnswer.json";
+		var url = "fakeJsonAnswers/configurations/fakeLoginAnswer.json";
 		var parameter = {
 			userName : userName,
 			password : password
@@ -155,7 +150,7 @@ services.factory('SessionManagement', function(AjaxRequest) {
 		AjaxRequest.get(url, parameter, callback, null);
 	};
 	sessionService.logout = function(callback) {
-		var url = "widgets/configurations/fakeLoginAnswer.json";
+		var url = "fakeJsonAnswers/configurations/fakeLoginAnswer.json";
 		var parameter = {};
 		AjaxRequest.get(url, parameter, callback, null);
 	};
@@ -212,3 +207,18 @@ services.factory('Location', function($location) {
 
 	}
 });
+
+services.factory('ContentManager', function(AjaxRequest,multiLanguage) {
+	var contentManager = {};
+
+	contentManager.getContent = function(pageName, callback,error) {
+		var currentLang=multiLanguage.getCurrentLanguage();
+		var url = "fakeJsonAnswers/pagesContentent/"+pageName+"_"+currentLang.value+".json";
+		AjaxRequest.getJSON(url, callback, error);
+	};
+	
+
+	return contentManager;
+
+});
+

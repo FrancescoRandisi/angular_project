@@ -2,7 +2,7 @@
 <div role="menu"
 	 class="leftMenuBar" 
 	 ng-controller="leftMenuCtrl" 
-	 dgtrade-Add-Attributes="aria-label={ariaNavMenu}">
+	 dg-Add-Attributes="aria-label={ariaNavMenu}">
 
 	<!--navigation-->
 	<ul id="nav" role='menubar'>
@@ -16,9 +16,8 @@
 						
 						<a href=''
 						   accesskey="{{item.accesskey}}" 
-						   ng-click="show(item.href)">
-	                       {{item.title}}
-					    </a>
+						   ng-click="show(item.href)"
+						   dg-string="{{item.title}}"></a>
 					 	 
 					</div>
 					

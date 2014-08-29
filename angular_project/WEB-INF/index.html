@@ -1,75 +1,69 @@
-
 <!doctype html>
 <html lang="en"  ng-app="dgApp" >
-  <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	
-	
-	<title>first page</title>
-	<link rel="stylesheet" href="pages/css/index.css">
-	<link rel="stylesheet" href="widgets/css/widgets.css">
-	<link rel="stylesheet" href="lib/bootstrap-css/css/bootstrap.css">
-	
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
 
-  </head>
+		<title>first page</title>
+		<link rel="stylesheet" href="pages/css/index.css">
+		<link rel="stylesheet" href="widgets/css/widgets.css">
+		<link rel="stylesheet" href="lib/bootstrap-css/css/bootstrap.css">
 
-  <body >
-	
-	<div class="container header">
-		<div class="banner"></div>
-		<div dgtrade-top-menu></div>
-		<div dgtrade-app-logo></div>
-		<div dgtrade-lang-selector></div>
-		<div dgtrade-breadcrumb></div>
-		<div dgtrade-session-manager></div>
-		<div dgtrade-error-message></div>
-	</div>
-	<div class="container main" ng-controller='indexCtrl'>
-		<div dgtrade-left-menu></div>
-		<div id="mainContent" class="ng-view"></div>
-		<button ng-click="test()">test error</button>
-	</div>
-	
-	
-	
-   <script src="lib/jquery/jquery-1.11.1.min.js"></script>
-   <script src="lib/angular/angular.min.js"></script>
-   <script src="lib/angular/angular-route.min.js"></script>
-   
-   
-   
-   <script src="structure/services/services.js"></script>
-   <script src="structure/services/utils.js"></script>
-   <script src="structure/directives/directives.js"></script>
-   <script src="structure/app.js"></script>
-   <script src="structure/appConfigurations/globalConfiguration.js"></script>
-  
-   <script src="widgets/widgetDefinition.js"></script>
-   <script src="widgets/services/widgetServices.js"></script>
-   
-   <script src="widgets/controllers/leftMenuCtrl.js"></script>
-   <script src="widgets/controllers/topMenuCtrl.js"></script>
-   <script src="widgets/controllers/breadCrumbCtrl.js"></script>
-   <script src="widgets/controllers/errorMessageCtrl.js"></script>
-   <script src="widgets/controllers/appLogoCtrl.js"></script>
-   <script src="widgets/controllers/sessionManagerCtrl.js"></script>
-   <script src="widgets/controllers/langSelectorCtrl.js"></script>
-    
-   <script src="widgets/filters/widgetFilters.js"></script>
-   
- 
-   
-   
-	
-   <script src="pages/controllers/indexCtrl.js"></script>
-   <script src="pages/controllers/firstCtrl.js"></script>
-  
-   
- 
-		
-  </body>
+	</head>
+
+	<body dg-lang>
+
+		<div class="container header">
+			<div class="banner"></div>
+			<div dg-top-menu></div>
+			<div dg-app-logo></div>
+			<div dg-lang-selector></div>
+			<div dg-breadcrumb></div>
+			<div dg-session-manager></div>
+			<div dg-error-message></div>
+		</div>
+		<div class="container main" ng-controller='indexCtrl'>
+			<div dg-left-menu></div>
+			<div id="mainContent" class="ng-view"></div>
+			<button ng-click="test('100')">
+				test error
+			</button>
+			<button ng-click="test('300')">
+				test warning
+			</button>
+			<button ng-click="test('400')">
+				test info
+			</button>
+		</div>
+
+		<script src="lib/jquery/jquery-1.11.1.min.js"></script>
+		<script src="lib/angular/angular.min.js"></script>
+		<script src="lib/angular/angular-route.min.js"></script>
+
+		<script src="structure/services/services.js"></script>
+		<script src="structure/services/utils.js"></script>
+		<script src="structure/directives/directives.js"></script>
+		<script src="structure/app.js"></script>
+		<script src="structure/appConfigurations/globalConfiguration.js"></script>
+
+		<script src="widgets/widgetDefinition.js"></script>
+		<script src="widgets/services/widgetServices.js"></script>
+
+		<script src="widgets/controllers/leftMenuCtrl.js"></script>
+		<script src="widgets/controllers/topMenuCtrl.js"></script>
+		<script src="widgets/controllers/breadCrumbCtrl.js"></script>
+		<script src="widgets/controllers/errorMessageCtrl.js"></script>
+		<script src="widgets/controllers/appLogoCtrl.js"></script>
+		<script src="widgets/controllers/sessionManagerCtrl.js"></script>
+		<script src="widgets/controllers/langSelectorCtrl.js"></script>
+
+		<script src="widgets/filters/widgetFilters.js"></script>
+
+		<script src="pages/controllers/indexCtrl.js"></script>
+		<script src="pages/controllers/firstCtrl.js"></script>
+
+	</body>
 </html>
